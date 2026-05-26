@@ -1,10 +1,10 @@
 import "./App.css";
-import CvForm from "./components/CvForm.jsx";
+import CVForm from "./components/CVForm/CVForm.jsx";
 
 export default function App() {
   return (
     <>
-      <CvForm></CvForm>
+      <CVForm />
     </>
   );
 }
