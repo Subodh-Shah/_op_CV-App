@@ -1,3 +1,8 @@
+.splitLayout,
+.splitLayout * {
+  box-sizing: border-box;
+}
+
 .splitLayout {
   display: flex;
   height: 100vh;
@@ -115,12 +120,14 @@
   border-radius: 8px;
   position: relative;
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .inputGroup {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  width: 100%;
 }
 
 .inputGroup label {
@@ -132,6 +139,7 @@
 }
 
 .inputField {
+  width: 100%;
   padding: 0.6rem 0.8rem;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
@@ -156,10 +164,12 @@ textarea.inputField {
 .row {
   display: flex;
   gap: 0.75rem;
+  width: 100%;
 }
 
 .row>* {
   flex: 1;
+  min-width: 0;
 }
 
 .btnAddItem {
@@ -176,6 +186,7 @@ textarea.inputField {
   justify-content: center;
   gap: 0.4rem;
   transition: background 0.2s;
+  width: 100%;
 }
 
 .btnAddItem:hover {
