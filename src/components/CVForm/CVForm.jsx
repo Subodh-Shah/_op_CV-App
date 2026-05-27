@@ -308,7 +308,7 @@ const CVForm = () => {
         <div className={styles.previewArea}>
           <div className={styles.previewHeader}>
             <h3>Live Workspace Preview</h3>
-            <small>Dynamic Fluid Scale</small>
+            <small>A4 Page Proportions</small>
           </div>
 
           <div className={styles.previewCard}>
