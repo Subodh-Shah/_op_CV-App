@@ -3,52 +3,52 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: #f8fafc;
+  background-color: #f1f5f9;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .sidebar {
-  width: 42%;
-  min-width: 420px;
-  max-width: 520px;
+  width: 40%;
+  min-width: 400px;
+  max-width: 480px;
   height: 100%;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   border-right: 1px solid #e2e8f0;
-  box-shadow: 4px 0 24px rgba(15, 23, 42, 0.03);
-  min-height: 0; /* Enforces strict layout boxing */
+  box-shadow: 4px 0 24px rgba(15, 23, 42, 0.04);
+  min-height: 0;
 }
 
 .previewContainer {
   flex: 1;
   height: 100%;
-  overflow-y: auto;
-  background-color: #334155;
+  overflow: hidden;
+  background-color: #1e293b;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Prevents A4 wrapper from stretching vertically */
-  padding: 2.5rem 1.5rem;
+  align-items: center;
+  padding: 4vh 2vw;
 }
 
 .header {
   padding: 1.5rem 2rem 1rem;
   border-bottom: 1px solid #f1f5f9;
-  flex-shrink: 0; /* Prevents container compression */
+  flex-shrink: 0;
 }
 
 .header h1 {
   margin: 0;
   color: #0f172a;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.5px;
 }
 
 .header p {
   color: #64748b;
-  margin-top: 0.3rem;
-  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
 }
 
 .formScrollArea {
@@ -58,7 +58,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  min-height: 0; /* Forces scroll bar execution when inner panels expand */
+  min-height: 0;
 }
 
 .accordionPanel {
@@ -66,7 +66,7 @@
   border-radius: 8px;
   overflow: hidden;
   background: #ffffff;
-  transition: border-color 0.2s;
+  transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
@@ -82,12 +82,11 @@
   padding: 1rem 1.25rem;
   background: #ffffff;
   border: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #334155;
   cursor: pointer;
   text-align: left;
-  transition: background 0.2s;
 }
 
 .accordionHeader:hover {
@@ -128,7 +127,7 @@
 }
 
 .inputGroup label {
-  font-size: 0.75rem;
+  font-size: 0.725rem;
   font-weight: 700;
   color: #475569;
   text-transform: uppercase;
@@ -147,8 +146,8 @@
 
 .inputField:focus {
   outline: none;
-  border-color: #0d9488;
-  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.12);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
 }
 
 textarea.inputField {
@@ -162,15 +161,15 @@ textarea.inputField {
   gap: 0.75rem;
 }
 
-.row > * {
+.row>* {
   flex: 1;
 }
 
 .btnAddItem {
   background: #f1f5f9;
-  color: #0f172a;
-  border: 1px dashed #cbd5e1;
-  padding: 0.55rem;
+  color: #4f46e5;
+  border: 1px dashed #c7d2fe;
+  padding: 0.6rem;
   border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 600;
@@ -179,6 +178,11 @@ textarea.inputField {
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
+  transition: background 0.2s;
+}
+
+.btnAddItem:hover {
+  background: #e0e7ff;
 }
 
 .btnRemoveItem {
@@ -205,7 +209,7 @@ textarea.inputField {
   background: #ffffff;
   display: flex;
   gap: 0.75rem;
-  flex-shrink: 0; /* Prevents action tray from getting squished */
+  flex-shrink: 0;
 }
 
 .btnAction {
@@ -215,29 +219,38 @@ textarea.inputField {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
   text-align: center;
 }
 
 .btnExample {
-  background: #e0f2fe;
-  color: #0369a1;
-  border: 1px solid #bae6fd;
+  background: #4f46e5;
+  color: #ffffff;
+  border: 1px solid #4338ca;
 }
 
-.btnExample:hover { background: #bae6fd; }
+.btnExample:hover {
+  background: #4338ca;
+}
 
 .btnReset {
-  background: #f1f5f9;
-  color: #475569;
-  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
 }
 
-.btnReset:hover { background: #e2e8f0; }
+.btnReset:hover {
+  background: #f8fafc;
+  color: #475569;
+}
 
+/* Fixed Viewport Presentation Frame Wrapper */
 .previewArea {
-  width: 100%;
-  max-width: 210mm;
+  height: 100%;
+  max-height: calc(100vh - 8vh);
+  aspect-ratio: 210 / 297;
+  display: flex;
+  flex-direction: column;
 }
 
 .previewHeader {
@@ -245,59 +258,162 @@ textarea.inputField {
   justify-content: space-between;
   align-items: center;
   color: #94a3b8;
-  margin-bottom: 0.5rem;
-  font-size: 0.8rem;
+  margin-bottom: 0.5vh;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  flex-shrink: 0;
 }
 
+/* Redesigned Premium A4 Document Node */
 .previewCard {
   background: #ffffff;
-  padding: 35mm 20mm 20mm 20mm;
-  min-height: 297mm;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   color: #334155;
-  font-size: 10pt;
+  font-size: clamp(9px, 1.2vh, 13px);
   line-height: 1.5;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modern Top Header Module */
+.resumeHeaderSection {
+  background: #0f172a;
+  color: #ffffff;
+  padding: 4vh 4% 3.5vh 4%;
+  flex-shrink: 0;
 }
 
 .previewName {
-  font-size: 22pt;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: clamp(18px, 2.8vh, 32px);
+  font-weight: 800;
+  color: #ffffff;
   line-height: 1.1;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.75px;
 }
 
-.previewSub {
-  color: #475569;
-  font-size: 9pt;
-  margin-top: 0.4rem;
-  border-bottom: 2px solid #0f172a;
-  padding-bottom: 0.75rem;
+/* Asymmetrical Two-Column Content Module */
+.resumeBodyGrid {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+  flex: 1;
+  min-height: 0;
 }
 
-.previewSection {
-  margin-top: 1.25rem;
+/* Left Sidebar Accent Frame */
+.resumeLeftColumn {
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  padding: 3vh 6% 2vh 12%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2vh;
+  overflow: hidden;
 }
 
+/* Right Main Data Frame */
+.resumeRightColumn {
+  padding: 3vh 6% 2vh 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2vh;
+  overflow: hidden;
+}
+
+/* Polished Typography Standards */
 .previewSection h2 {
-  font-size: 10.5pt;
+  font-size: clamp(9px, 1.25vh, 12.5px);
   font-weight: 700;
   color: #0f172a;
   text-transform: uppercase;
-  border-bottom: 1px solid #cbd5e1;
-  padding-bottom: 0.15rem;
-  margin: 0 0 0.5rem 0;
+  letter-spacing: 1px;
+  border-bottom: 1.5px solid #e2e8f0;
+  padding-bottom: 0.4vh;
+  margin: 0 0 0.8vh 0;
+  display: flex;
+  align-items: center;
 }
 
-.workBox { margin-bottom: 0.85rem; }
-.workMetaLine { display: flex; justify-content: space-between; font-weight: 700; color: #1e293b; }
-.workCompany { font-weight: 500; color: #475569; }
-.workDates { font-weight: 400; color: #64748b; font-size: 9pt; }
-.previewText { font-size: 9.5pt; color: #334155; white-space: pre-wrap; margin-top: 0.15rem; }
+/* Left Column Specific Sub-headers */
+.resumeLeftColumn .previewSection h2 {
+  border-bottom: 1.5px solid #cbd5e1;
+  color: #475569;
+}
 
-.skillTagsContainer { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.35rem; }
-.skillTag { background: #f1f5f9; color: #1e293b; padding: 0.15rem 0.45rem; border-radius: 4px; font-size: 8.5pt; font-weight: 500; }
-.emptyMessage { color: #cbd5e1; font-style: italic; }
+.contactVerticalList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6vh;
+  font-size: clamp(8px, 1.1vh, 11px);
+  color: #475569;
+  word-break: break-all;
+}
+
+.contactVerticalList a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.workBox {
+  margin-bottom: 1.2vh;
+}
+
+.workBox:last-child {
+  margin-bottom: 0;
+}
+
+.workMetaLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 700;
+  color: #0f172a;
+  font-size: clamp(9px, 1.25vh, 13px);
+}
+
+.workCompany {
+  font-weight: 500;
+  color: #4f46e5;
+}
+
+.workDates {
+  font-weight: 500;
+  color: #64748b;
+  font-size: clamp(7.5px, 1.05vh, 11px);
+  white-space: nowrap;
+}
+
+.previewText {
+  font-size: clamp(8.5px, 1.15vh, 11.5px);
+  color: #475569;
+  white-space: pre-wrap;
+  margin-top: 0.3vh;
+  line-height: 1.45;
+}
+
+/* Clean Muted Pill Badges for Tech Skills */
+.skillTagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.4vh;
+}
+
+.skillTag {
+  background: #e2e8f0;
+  color: #1e293b;
+  padding: 0.2vh 0.5rem;
+  border-radius: 4px;
+  font-size: clamp(7.5px, 1.05vh, 10.5px);
+  font-weight: 600;
+}
+
+.emptyMessage {
+  color: #cbd5e1;
+  font-style: italic;
+}
 
 @media (max-width: 1024px) {
   .splitLayout {
@@ -305,22 +421,45 @@ textarea.inputField {
     height: auto;
     overflow: visible;
   }
+
   .sidebar {
     width: 100%;
     min-width: auto;
     max-width: none;
     height: auto;
   }
+
   .formScrollArea {
     overflow-y: visible;
     padding: 1rem;
   }
+
   .previewContainer {
     padding: 1rem;
     height: auto;
+    overflow: visible;
   }
+
+  .previewArea {
+    max-height: none;
+    aspect-ratio: auto;
+  }
+
   .previewCard {
-    padding: 2rem 1rem;
-    min-height: auto;
+    overflow: visible;
+  }
+
+  .resumeBodyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resumeLeftColumn {
+    padding: 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .resumeRightColumn {
+    padding: 1.5rem;
   }
 }
