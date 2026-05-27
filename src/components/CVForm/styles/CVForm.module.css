@@ -8,9 +8,9 @@
 }
 
 .sidebar {
-  width: 40%;
-  min-width: 400px;
-  max-width: 480px;
+  width: 35%;
+  min-width: 380px;
+  max-width: 440px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -23,12 +23,12 @@
 .previewContainer {
   flex: 1;
   height: 100%;
-  overflow: hidden;
-  background-color: #1e293b;
+  overflow-y: auto;
+  background-color: #0f172a;
+  padding: 1.5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 4vh 2vw;
+  align-items: stretch;
 }
 
 .header {
@@ -87,10 +87,6 @@
   color: #334155;
   cursor: pointer;
   text-align: left;
-}
-
-.accordionHeader:hover {
-  background: #f8fafc;
 }
 
 .accordionContent {
@@ -229,124 +225,101 @@ textarea.inputField {
   border: 1px solid #4338ca;
 }
 
-.btnExample:hover {
-  background: #4338ca;
-}
-
 .btnReset {
   background: #ffffff;
   color: #64748b;
   border: 1px solid #e2e8f0;
 }
 
-.btnReset:hover {
-  background: #f8fafc;
-  color: #475569;
-}
-
-/* Fixed Viewport Presentation Frame Wrapper */
 .previewArea {
-  height: 100%;
-  max-height: calc(100vh - 8vh);
-  aspect-ratio: 210 / 297;
+  width: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
 }
 
 .previewHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #94a3b8;
-  margin-bottom: 0.5vh;
-  font-size: 0.7rem;
+  color: #64748b;
+  font-size: 0.75rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  flex-shrink: 0;
+  padding-left: 0.25rem;
 }
 
-/* Redesigned Premium A4 Document Node */
 .previewCard {
   background: #ffffff;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
   color: #334155;
-  font-size: clamp(9px, 1.2vh, 13px);
-  line-height: 1.5;
+  border-radius: 12px;
+  width: 100%;
   flex: 1;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-/* Modern Top Header Module */
 .resumeHeaderSection {
-  background: #0f172a;
+  background: #1e293b;
   color: #ffffff;
-  padding: 4vh 4% 3.5vh 4%;
-  flex-shrink: 0;
+  padding: 3.5rem 4rem;
 }
 
 .previewName {
-  font-size: clamp(18px, 2.8vh, 32px);
+  font-size: 2.5rem;
   font-weight: 800;
   color: #ffffff;
   line-height: 1.1;
   letter-spacing: -0.75px;
 }
 
-/* Asymmetrical Two-Column Content Module */
 .resumeBodyGrid {
   display: grid;
-  grid-template-columns: 32% 1fr;
+  grid-template-columns: 280px 1fr;
+  width: 100%;
   flex: 1;
-  min-height: 0;
 }
 
-/* Left Sidebar Accent Frame */
 .resumeLeftColumn {
   background: #f8fafc;
   border-right: 1px solid #e2e8f0;
-  padding: 3vh 6% 2vh 12%;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2.2vh;
-  overflow: hidden;
+  gap: 2.5rem;
 }
 
-/* Right Main Data Frame */
 .resumeRightColumn {
-  padding: 3vh 6% 2vh 5%;
+  padding: 3rem 4rem;
   display: flex;
   flex-direction: column;
-  gap: 2.2vh;
-  overflow: hidden;
+  gap: 2.5rem;
 }
 
-/* Polished Typography Standards */
 .previewSection h2 {
-  font-size: clamp(9px, 1.25vh, 12.5px);
+  font-size: 0.85rem;
   font-weight: 700;
   color: #0f172a;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 1.5px solid #e2e8f0;
-  padding-bottom: 0.4vh;
-  margin: 0 0 0.8vh 0;
-  display: flex;
-  align-items: center;
+  letter-spacing: 1.5px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.6rem;
+  margin: 0 0 1.25rem 0;
 }
 
-/* Left Column Specific Sub-headers */
 .resumeLeftColumn .previewSection h2 {
-  border-bottom: 1.5px solid #cbd5e1;
+  border-bottom: 2px solid #cbd5e1;
   color: #475569;
 }
 
 .contactVerticalList {
   display: flex;
   flex-direction: column;
-  gap: 0.6vh;
-  font-size: clamp(8px, 1.1vh, 11px);
+  gap: 0.85rem;
+  font-size: 0.88rem;
   color: #475569;
   word-break: break-all;
 }
@@ -354,10 +327,11 @@ textarea.inputField {
 .contactVerticalList a {
   color: #4f46e5;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .workBox {
-  margin-bottom: 1.2vh;
+  margin-bottom: 1.75rem;
 }
 
 .workBox:last-child {
@@ -370,43 +344,44 @@ textarea.inputField {
   align-items: baseline;
   font-weight: 700;
   color: #0f172a;
-  font-size: clamp(9px, 1.25vh, 13px);
+  font-size: 1.1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .workCompany {
-  font-weight: 500;
+  font-weight: 600;
   color: #4f46e5;
 }
 
 .workDates {
   font-weight: 500;
   color: #64748b;
-  font-size: clamp(7.5px, 1.05vh, 11px);
+  font-size: 0.85rem;
   white-space: nowrap;
 }
 
 .previewText {
-  font-size: clamp(8.5px, 1.15vh, 11.5px);
+  font-size: 0.925rem;
   color: #475569;
   white-space: pre-wrap;
-  margin-top: 0.3vh;
-  line-height: 1.45;
+  margin-top: 0.5rem;
+  line-height: 1.6;
 }
 
-/* Clean Muted Pill Badges for Tech Skills */
 .skillTagsContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
-  margin-top: 0.4vh;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
 }
 
 .skillTag {
   background: #e2e8f0;
   color: #1e293b;
-  padding: 0.2vh 0.5rem;
-  border-radius: 4px;
-  font-size: clamp(7.5px, 1.05vh, 10.5px);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
   font-weight: 600;
 }
 
@@ -415,7 +390,7 @@ textarea.inputField {
   font-style: italic;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1150px) {
   .splitLayout {
     flex-direction: column;
     height: auto;
@@ -431,21 +406,12 @@ textarea.inputField {
 
   .formScrollArea {
     overflow-y: visible;
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .previewContainer {
-    padding: 1rem;
+    padding: 1.5rem;
     height: auto;
-    overflow: visible;
-  }
-
-  .previewArea {
-    max-height: none;
-    aspect-ratio: auto;
-  }
-
-  .previewCard {
     overflow: visible;
   }
 
@@ -454,12 +420,12 @@ textarea.inputField {
   }
 
   .resumeLeftColumn {
-    padding: 1.5rem;
+    padding: 2.5rem 2rem;
     border-right: none;
     border-bottom: 1px solid #e2e8f0;
   }
 
   .resumeRightColumn {
-    padding: 1.5rem;
+    padding: 2.5rem 2rem;
   }
 }

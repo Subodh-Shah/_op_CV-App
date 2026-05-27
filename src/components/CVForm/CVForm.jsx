@@ -158,7 +158,7 @@ const CVForm = () => {
       <div className={styles.sidebar}>
         <div className={styles.header}>
           <h1>📄 Interactive CV Canvas</h1>
-          <p>Real-time updates mapped to a single window workspace.</p>
+          <p>Real-time updates mapped to a fluid workspace.</p>
         </div>
 
         <div className={styles.formScrollArea}>
@@ -307,15 +307,15 @@ const CVForm = () => {
       <div className={styles.previewContainer}>
         <div className={styles.previewArea}>
           <div className={styles.previewHeader}>
-            <h3>Live Preview</h3>
-            <small>Locked Single Viewport</small>
+            <h3>Live Workspace Preview</h3>
+            <small>Dynamic Fluid Scale</small>
           </div>
 
           <div className={styles.previewCard}>
             <div className={styles.resumeHeaderSection}>
               <div className={styles.previewName}>
                 {formData.fullName || (
-                  <span style={{ color: "rgba(255,255,255,0.3)" }}>
+                  <span style={{ color: "rgba(255,255,255,0.25)" }}>
                     Your Full Name
                   </span>
                 )}
@@ -332,7 +332,7 @@ const CVForm = () => {
                     {formData.location && <div>📍 {formData.location}</div>}
                     {formData.dob && <div>🎂 {formatDate(formData.dob)}</div>}
                     {formData.portfolio && (
-                      <div style={{ marginTop: "0.2vh" }}>
+                      <div style={{ marginTop: "2px" }}>
                         🔗{" "}
                         <a
                           href={formData.portfolio}
@@ -375,7 +375,7 @@ const CVForm = () => {
                     <h2>Languages</h2>
                     <div
                       className={styles.previewText}
-                      style={{ fontSize: "clamp(8px, 1.1vh, 11px)" }}
+                      style={{ fontSize: "0.85rem" }}
                     >
                       {formData.languages}
                     </div>
@@ -471,7 +471,7 @@ const CVForm = () => {
                     style={{
                       display: "grid",
                       gridTemplateColumns: "1fr 1fr",
-                      gap: "1rem",
+                      gap: "1.5rem",
                     }}
                   >
                     {formData.certifications && (
