@@ -1,193 +1,338 @@
 /* =========================================
-   1. MAIN LAYOUT (SPLIT SCREEN)
+   1. GLOBAL SYSTEM & SPLIT LAYOUT
 ========================================= */
 .splitLayout {
   display: flex;
-  height: 100vh; /* Takes full height of browser */
+  height: 100vh;
   width: 100vw;
-  overflow: hidden; /* Prevents double scrollbars */
-  background-color: #f1f5f9;
+  overflow: hidden;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* LEFT PANE: Form Sidebar */
+/* LEFT SIDEBAR: Form Panel */
 .sidebar {
-  width: 45%;
-  min-width: 400px;
-  max-width: 600px;
+  width: 42%;
+  min-width: 450px;
+  max-width: 550px;
   height: 100%;
-  overflow-y: auto; /* Independent scrolling */
+  overflow-y: auto;
   background-color: #ffffff;
   border-right: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
+  box-shadow: 4px 0 24px rgba(15, 23, 42, 0.03);
 }
 
-/* RIGHT PANE: Preview Area */
+/* RIGHT PANEL: Canvas Area */
 .previewContainer {
-  flex: 1; /* Takes up remaining space */
+  flex: 1;
   height: 100%;
-  overflow-y: auto; /* Independent scrolling */
-  background-color: #525659; /* Classic PDF viewer background */
+  overflow-y: auto;
+  background-color: #334155; /* Neutral dark slate viewport */
   display: flex;
   justify-content: center;
-  padding: 3rem 2rem;
+  padding: 3.5rem 2rem;
 }
 
 /* =========================================
-   2. SIDEBAR INTERNALS
+   2. FORM INTERNALS & COMPONENTS
 ========================================= */
 .header {
-  padding: 2rem 2rem 1rem;
-  text-align: center;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 2.5rem 2.5rem 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .header h1 {
   margin: 0;
-  color: #1f2937;
-  font-size: 1.8rem;
+  color: #0f172a;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 .header p {
   color: #64748b;
-  margin-top: 0.5rem;
-  font-size: 0.95rem;
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
 }
 
 .form {
-  padding: 2rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
   flex-grow: 1;
 }
 
-.sectionTitle {
-  font-size: 1.25rem;
-  color: #1f5e6b;
-  border-bottom: 2px solid #e2e8f0;
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
+/* Form Sections (Cards) */
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sectionHeader {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Group Blocks (Dynamic Array Cards) */
+.arrayGroupCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 1.25rem;
+  border-radius: 8px;
+  position: relative;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+
+.arrayGroupCard:hover {
+  border-color: #cbd5e1;
+}
+
+/* Input Fields */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.inputGroup label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.inputField {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #0f172a;
+  background-color: #ffffff;
+  transition: all 0.2s;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+textarea.inputField {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
 }
 
 .row {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.2rem;
+  gap: 1rem;
 }
 
 .row > * {
   flex: 1;
 }
 
-/* Buttons */
-.buttonGroup {
+/* Control Buttons */
+.btnAddItem {
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px dashed #cbd5e1;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
   display: flex;
-  gap: 1rem;
-  padding: 0 2rem 2rem;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
 }
 
-.btn {
-  padding: 0.8rem 1.2rem;
+.btnAddItem:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+.btnRemoveItem {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: #fee2e2;
+  color: #991b1b;
   border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.btnRemoveItem:hover {
+  background: #fca5a5;
+}
+
+/* Sidebar Footer Actions */
+.stickyActions {
+  padding: 1.5rem 2.5rem;
+  border-top: 1px solid #f1f5f9;
+  background: #ffffff;
+}
+
+.btnReset {
+  width: 100%;
+  padding: 0.75rem;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
-  flex: 1;
-  transition: opacity 0.2s;
+  font-size: 0.9rem;
+  transition: background 0.2s;
 }
 
-.btn:hover { opacity: 0.9; }
-.btnPrimary { background-color: #1f5e6b; color: white; }
-.btnSecondary { background-color: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
-.btnClear { background-color: #fee2e2; color: #991b1b; }
-
-.footer {
-  background: #f8fafc;
-  padding: 1.5rem 2rem;
-  text-align: center;
-  font-size: 0.75rem;
-  color: #6c8d9e;
-  border-top: 1px solid #e2e8f0;
+.btnReset:hover {
+  background: #e2e8f0;
 }
 
 /* =========================================
-   3. A4 PREVIEW PAPER
+   3. THE PREVIEW CANVAS (A4 PAPER)
 ========================================= */
 .previewArea {
   width: 100%;
-  max-width: 210mm; /* Standard A4 Width */
+  max-width: 210mm;
 }
 
 .previewHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #e2e8f0;
-  margin-bottom: 1rem;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .previewCard {
-  background: white;
-  padding: 50px;
-  min-height: 297mm; /* Standard A4 Height */
-  border-radius: 4px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  background: #ffffff;
+  padding: 45mm 25mm 25mm 25mm; /* Standard professional resume margins */
+  min-height: 297mm;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
   color: #334155;
-  line-height: 1.6;
+  font-size: 10.5pt;
+  line-height: 1.5;
 }
 
 .previewName {
-  font-size: 2.2rem;
-  font-weight: 800;
+  font-size: 24pt;
+  font-weight: 700;
   color: #0f172a;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
 }
 
 .previewSub {
-  color: #64748b;
-  font-size: 0.9rem;
+  color: #475569;
+  font-size: 9.5pt;
   margin-top: 0.5rem;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 1rem;
 }
 
-.previewSection { margin-top: 1.8rem; }
-.previewSection strong {
-  display: block;
-  font-size: 1.1rem;
-  color: #1f5e6b;
+.previewSub a {
+  text-decoration: none;
+}
+
+.previewSection {
+  margin-top: 1.5rem;
+}
+
+.previewSection h2 {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #0f172a;
   text-transform: uppercase;
-  border-bottom: 2px solid #1f5e6b;
-  padding-bottom: 0.3rem;
-  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 0.2rem;
+  margin: 0 0 0.6rem 0;
 }
 
-.workBox { margin-bottom: 1.2rem; }
-.workTitle { font-weight: 700; color: #0f172a; }
-.workCompany { font-weight: 600; color: #1f5e6b; }
-.workDates { float: right; font-style: italic; color: #64748b; font-size: 0.85rem; }
-.previewText { font-size: 0.95rem; white-space: pre-wrap; }
-.skillTag {
-  display: inline-block;
-  background: #f1f5f9;
-  color: #334155;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  margin: 0.2rem 0.4rem 0.2rem 0;
-  font-size: 0.85rem;
-  border: 1px solid #e2e8f0;
+.workBox {
+  margin-bottom: 1rem;
 }
-.emptyMessage { color: #94a3b8; font-style: italic; }
+
+.workMetaLine {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.workCompany {
+  font-weight: 500;
+  color: #475569;
+}
+
+.workDates {
+  font-weight: 400;
+  color: #64748b;
+  font-size: 9.5pt;
+}
+
+.previewText {
+  font-size: 10pt;
+  color: #334155;
+  white-space: pre-wrap;
+  margin-top: 0.2rem;
+}
+
+.skillTagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.skillTag {
+  background: #f1f5f9;
+  color: #1e293b;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 9pt;
+  font-weight: 500;
+}
+
+.emptyMessage {
+  color: #94a3b8;
+  font-style: italic;
+}
 
 /* =========================================
-   4. MOBILE RESPONSIVENESS
+   4. ANDROID / MOBILE OVERRIDES
 ========================================= */
 @media (max-width: 1024px) {
   .splitLayout {
     flex-direction: column;
     height: auto;
-    overflow: visible; /* Restore normal page scrolling on mobile */
+    overflow: visible;
   }
 
   .sidebar {
@@ -199,19 +344,19 @@
     border-right: none;
   }
 
+  .form {
+    padding: 1.5rem;
+    gap: 1.8rem;
+  }
+
   .previewContainer {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
     height: auto;
-    overflow-y: visible;
+    background-color: #e2e8f0;
   }
 
   .previewCard {
-    padding: 1.5rem;
-    min-height: auto; /* Don't force A4 height on mobile */
-  }
-
-  .row {
-    flex-direction: column;
-    gap: 0.8rem;
+    padding: 2rem 1.2rem;
+    min-height: auto;
   }
 }

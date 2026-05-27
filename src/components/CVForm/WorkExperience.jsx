@@ -1,101 +1,44 @@
-import styles from "./styles/CVForm.module.css";
-
-const WorkExperience = ({ data, onChange, onAdd, onRemove }) => {
+const WorkExperience = ({ data, onChange, onAdd, onRemove, styles }) => {
   return (
-    <div className={styles.section}>
-      <div className={styles.sectionTitle}>💼 Work Experience</div>
-      <div className={styles.formGrid}>
-        
-        {data.map((item, index) => (
-          <div 
-            key={item.id} 
-            style={{ 
-              marginBottom: index !== data.length - 1 ? '1.5rem' : '0', 
-              paddingBottom: index !== data.length - 1 ? '1.5rem' : '0', 
-              borderBottom: index !== data.length - 1 ? '1px solid #e2e8f0' : 'none' 
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-              <h4 style={{ margin: 0, color: '#1f5e6b', fontSize: '0.95rem' }}>Experience #{index + 1}</h4>
-              {data.length > 1 && (
-                <button
-                  type="button"
-                  className={`${styles.btn} ${styles.btnClear}`}
-                  style={{ padding: '0.3rem 0.8rem', fontSize: '0.75rem' }}
-                  onClick={() => onRemove(item.id)}
-                >
-                  🗑️ Remove
-                </button>
-              )}
+    <div className={styles.formSection}>
+      <div className={styles.sectionHeader}>💼 Professional Experience</div>
+      
+      {data.map((work) => (
+        <div key={work.id} className={styles.arrayGroupCard}>
+          <button type="button" className={styles.btnRemoveItem} onClick={() => onRemove(work.id)}>✕</button>
+          
+          <div className={styles.row} style={{ marginBottom: "1rem" }}>
+            <div className={styles.inputGroup}>
+              <label>Job Designation</label>
+              <input type="text" className={styles.inputField} value={work.jobTitle} onChange={(e) => onChange(work.id, 'jobTitle', e.target.value)} placeholder="Software Engineer" />
             </div>
-
-            <div className={styles.row}>
-              <div className={styles.inputGroup}>
-                <label>Job Title</label>
-                <input
-                  type="text"
-                  value={item.jobTitle}
-                  onChange={(e) => onChange(item.id, "jobTitle", e.target.value)}
-                  placeholder="Senior UX Designer"
-                />
-              </div>
-              <div className={styles.inputGroup}>
-                <label>Company</label>
-                <input
-                  type="text"
-                  value={item.company}
-                  onChange={(e) => onChange(item.id, "company", e.target.value)}
-                  placeholder="Design Studio Inc."
-                />
-              </div>
-            </div>
-            
-            <div className={styles.row}>
-              <div className={styles.inputGroup}>
-                <label>Start Date</label>
-                <input
-                  type="text"
-                  value={item.startDate}
-                  onChange={(e) => onChange(item.id, "startDate", e.target.value)}
-                  placeholder="Jan 2020"
-                />
-              </div>
-              <div className={styles.inputGroup}>
-                <label>End Date</label>
-                <input
-                  type="text"
-                  value={item.endDate}
-                  onChange={(e) => onChange(item.id, "endDate", e.target.value)}
-                  placeholder="Present"
-                />
-              </div>
-            </div>
-            
-            <div className={styles.fullWidth}>
-              <div className={styles.inputGroup}>
-                <label>Key Responsibilities / Achievements</label>
-                <textarea
-                  rows="2"
-                  value={item.workDesc}
-                  onChange={(e) => onChange(item.id, "workDesc", e.target.value)}
-                  placeholder="Led product redesign increasing engagement by 35%..."
-                ></textarea>
-              </div>
+            <div className={styles.inputGroup}>
+              <label>Organization</label>
+              <input type="text" className={styles.inputField} value={work.company} onChange={(e) => onChange(work.id, 'company', e.target.value)} placeholder="Tech Corp" />
             </div>
           </div>
-        ))}
 
-        <div style={{ marginTop: '0.5rem' }}>
-          <button
-            type="button"
-            className={`${styles.btn} ${styles.btnSecondary}`}
-            onClick={onAdd}
-          >
-            ➕ Add Another Experience
-          </button>
+          <div className={styles.row} style={{ marginBottom: "1rem" }}>
+            <div className={styles.inputGroup}>
+              <label>Timeline From</label>
+              <input type="text" className={styles.inputField} value={work.startDate} onChange={(e) => onChange(work.id, 'startDate', e.target.value)} placeholder="Jan 2024" />
+            </div>
+            <div className={styles.inputGroup}>
+              <label>Timeline To</label>
+              <input type="text" className={styles.inputField} value={work.endDate} onChange={(e) => onChange(work.id, 'endDate', e.target.value)} placeholder="Present" />
+            </div>
+          </div>
+
+          <div className={styles.inputGroup}>
+            <label>Core Responsibilities</label>
+            <textarea className={styles.inputField} value={work.workDesc} onChange={(e) => onChange(work.id, 'workDesc', e.target.value)} placeholder="Developed core architectural modules using MERN Stack..." />
+          </div>
         </div>
+      ))}
 
-      </div>
+      <button type="button" className={styles.btnAddItem} onClick={onAdd}>
+        ➕ Append Experience Node
+      </button>
     </div>
   );
 };
