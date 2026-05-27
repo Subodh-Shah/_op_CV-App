@@ -206,7 +206,9 @@
     background: #ffe4e2;
 }
 
-/* Preview area */
+/* =========================================
+   PREVIEW AREA (Aesthetic Upgrade)
+========================================= */
 .previewArea {
     margin-top: 2rem;
     border-top: 2px dashed #cbd5e1;
@@ -227,119 +229,140 @@
     font-size: 1.3rem;
     font-weight: 600;
     color: #0f3b4f;
-    overflow-wrap: break-word;
 }
 
+/* The CV "Paper" */
 .previewCard {
-    background: #fefefe;
-    border: 1px solid #e4edf2;
-    border-radius: 1.2rem;
-    padding: 1.5rem;
-    max-height: 550px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px; /* Sharper corners for a paper look */
+    padding: 2.5rem; /* More breathing room */
+    max-height: 700px;
     overflow-y: auto;
     overflow-x: hidden;
-    line-height: 1.5;
+    line-height: 1.6;
     width: 100%;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    color: #334155; /* Softer black for better readability */
 }
 
-/* Preview inner styles */
+/* Typography & Hierarchy */
 .previewName {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #1f5e6b;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
     margin-bottom: 0.2rem;
-    overflow-wrap: break-word;
+    text-align: center; /* Center aligning the header looks very professional */
 }
 
 .previewSub {
     font-size: 0.85rem;
-    color: #4b6b7a;
-    border-bottom: 1px solid #e2edf2;
-    padding-bottom: 0.6rem;
-    margin-bottom: 1rem;
-    overflow-wrap: break-word;
+    color: #64748b;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    line-height: 1.8;
 }
 
 .previewSection {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
+/* Section Headings */
 .previewSection strong {
     display: block;
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #2c7a6e;
-    margin-bottom: 0.3rem;
+    letter-spacing: 0.05em;
+    color: #0f172a;
+    border-bottom: 2px solid #1f5e6b; /* Accent color separator */
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.8rem;
 }
 
 .previewText {
-    font-size: 0.9rem;
-    color: #1f2e3a;
-    overflow-wrap: break-word;
-    word-break: break-word;
+    font-size: 0.95rem;
+    color: #334155;
+    white-space: pre-line; /* Respects line breaks in textareas */
 }
 
+/* Work & Education Items */
+.workBox {
+    background: transparent; /* Removed the grey box */
+    padding: 0;
+    margin-bottom: 1.2rem;
+}
+
+/* Creating a flex header for Job Title and Dates */
+.workTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    display: inline-block;
+}
+
+.workCompany {
+    font-weight: 600;
+    color: #1f5e6b; /* Matches accent color */
+    font-size: 0.95rem;
+}
+
+.workDates {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-style: italic;
+    float: right; /* Pushes dates to the right edge */
+}
+
+/* Skill Tags - Made sharper and less bubbly */
 .skillTag {
     display: inline-block;
-    background: #e6f2ef;
-    padding: 0.2rem 0.7rem;
-    border-radius: 30px;
-    font-size: 0.75rem;
-    margin: 0.2rem 0.2rem;
-    overflow-wrap: break-word;
+    background: #f8fafc;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px; /* Square corners look more mature */
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0.25rem 0.3rem 0.25rem 0;
 }
 
 .emptyMessage {
     color: #94a3b8;
     font-style: italic;
-    font-size: 0.85rem;
-}
-
-.workBox {
-    background: #f8fafc;
-    border-radius: 1rem;
-    padding: 0.8rem;
-    margin-top: 0.5rem;
-    overflow-wrap: break-word;
-    word-break: break-word;
-}
-
-.workTitle {
-    font-weight: 700;
-    overflow-wrap: break-word;
-}
-
-.workCompany {
-    font-weight: 500;
-    color: #2c5a6e;
-    overflow-wrap: break-word;
-}
-
-.workDates {
-    font-size: 0.75rem;
-    color: #5d7f8e;
-    overflow-wrap: break-word;
+    font-size: 0.9rem;
 }
 
 .warningNote {
-    background: #fff9e6;
-    padding: 0.6rem;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    color: #b45309;
-    margin-top: 1rem;
-    overflow-wrap: break-word;
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+    color: #991b1b;
+    margin-bottom: 1.5rem;
 }
+
+/* Clearer float after workDates */
+.workBox::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* =========================================
+   FOOTER & RESPONSIVE FIXES (Restored)
+========================================= */
 
 .footer {
     background: #f8fafc;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: #6c8d9e;
-    border-top: 1px solid #e2edf2;
-    overflow-wrap: break-word;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 2rem;
 }
 
 /* Responsive */
@@ -381,5 +404,10 @@
 
     .sectionTitle {
         padding: 0.8rem 1rem;
+    }
+
+    /* Shrink the paper padding slightly on mobile */
+    .previewCard {
+        padding: 1.5rem;
     }
 }
